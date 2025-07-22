@@ -1,0 +1,24 @@
+#!/usr/bin/env python3
+
+import sys, subprocess, platform
+
+
+
+# Warn archlinux users to use the archlinux script
+if platform.system() == 'Linux' and platform.node() == 'archlinux':
+	print('get-nobash: WARNING: On archlinux systems, the script \'arch-get-nobash\'\nshould be used instead.', file=sys.stderr)
+
+def main() -> int: # {
+	process = subprocess.Popen(['python3', '-m', 'pip', 'install', 'nobash'])
+	process.wait()
+
+	if process.returncode == 0:
+		print('\nSuccess!')
+
+	return process.returncode
+# }
+
+if __name__ == '__main__':
+	sys.exit(main())
+
+
